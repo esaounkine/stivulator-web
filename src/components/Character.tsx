@@ -42,9 +42,10 @@ const Character = forwardRef<CharacterHandle, CharacterProps>(function Character
     : steveState === 'laughing' ? 'steve-laughing'
     : steveState === 'eating' ? 'steve-eating'
     : steveState === 'postEat' ? 'steve-post-eat'
+    : steveState === 'dodging' ? 'steve-dodging'
     : 'steve-idle';
 
-  const showAnnoyedFace = steveState === 'annoyed' || steveState === 'postEat';
+  const showAnnoyedFace = steveState === 'annoyed' || steveState === 'postEat' || steveState === 'dodging';
 
   return (
     <div

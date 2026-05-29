@@ -23,7 +23,7 @@ export default function Game() {
   const {
     activeCharacter, isSwapping,
     steveState, mouthOpen, score, highScore, feedStreak,
-    floatingTexts, particles, scoreBounce, laughCountdown,
+    floatingTexts, particles, scoreBounce, scoreShake, laughCountdown,
     isTickling, isDragging, draggedItem, dragPos, trajectory, activeThrow,
     tickleStart, tickleMove, tickleEnd,
     dragStart, dragMove, dragEnd,
@@ -125,7 +125,7 @@ export default function Game() {
 
       {/* Score */}
       <div className="absolute top-4 right-4 z-30 pointer-events-none">
-        <div className={`bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-2 border-[3px] border-yellow-300 shadow-lg ${scoreBounce ? 'score-bounce' : ''}`}>
+        <div className={`bg-white/80 backdrop-blur-sm rounded-2xl px-4 py-2 border-[3px] border-yellow-300 shadow-lg ${scoreBounce ? 'score-bounce' : ''} ${scoreShake ? 'score-shake' : ''}`}>
           <div className="flex items-center gap-2">
             <span className="text-xl">{'🍽️'}</span>
             <span className="text-2xl font-bold text-red-400">{score}</span>
@@ -189,8 +189,10 @@ export default function Game() {
       {/* Tutorial hint */}
       {score === 0 && steveState === 'idle' && (
         <div className="absolute bottom-40 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-          <div className="bg-white/70 backdrop-blur-sm rounded-xl px-4 py-2 text-xs text-gray-400 text-center animate-pulse">
+          <div className="bg-white/70 backdrop-blur-sm rounded-xl px-4 py-2 text-xs text-gray-500 text-center animate-pulse">
             {'👆 Press & wiggle on belly to tickle'}
+            <br />
+            <span className="text-[10px]">{'Drag items to mouth when laughing • Miss = Steve dodges!'}</span>
             <br />
             <span className="text-[10px]">{'Click the corner guy to swap targets!'}</span>
           </div>
