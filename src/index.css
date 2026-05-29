@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Stivulator Game Animations === */
+
+/* Steve idle - COMPLETELY STILL */
+.steve-idle {
+  /* No animation. Steve stands still. */
+}
+
+/* Steve annoyed - subtle defensive lean with hand-area twitch */
+@keyframes steve-annoyed {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  20% { transform: rotate(0.8deg) translateX(3px); }
+  40% { transform: rotate(-0.5deg) translateX(-2px); }
+  60% { transform: rotate(1deg) translateX(2px); }
+  80% { transform: rotate(-0.8deg) translateX(-3px); }
+}
+
+.steve-annoyed {
+  animation: steve-annoyed 0.6s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+
+/* Steve laughing - whole body shakes */
+@keyframes steve-laughing {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  15% { transform: translateY(-5px) rotate(2deg); }
+  30% { transform: translateY(2px) rotate(-2deg); }
+  45% { transform: translateY(-4px) rotate(1.5deg); }
+  60% { transform: translateY(3px) rotate(-1.5deg); }
+  75% { transform: translateY(-3px) rotate(2deg); }
+  90% { transform: translateY(1px) rotate(-0.5deg); }
+}
+
+.steve-laughing {
+  animation: steve-laughing 0.35s ease-in-out infinite;
+}
+
+/* Steve eating - happy bounce */
+@keyframes steve-eating {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-12px) scale(1.06); }
+  60% { transform: translateY(2px) scale(0.97); }
+  80% { transform: translateY(-5px) scale(1.03); }
+}
+
+.steve-eating {
+  animation: steve-eating 0.5s ease-in-out;
+}
+
+/* Steve post-eat - grumpy slump */
+@keyframes steve-post-eat {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(3px) scale(0.97) rotate(1deg); }
+  60% { transform: translateY(-1px) scale(1.01) rotate(-0.5deg); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.steve-post-eat {
+  animation: steve-post-eat 0.8s ease-in-out;
+}
+
+/* Face overlay - smooth fade */
+.face-overlay {
+  position: absolute;
+  left: 5%;
+  top: 2%;
+  width: 90%;
+  height: 42%;
+  pointer-events: none;
+  transition: opacity 0.12s ease-out;
+}
+
+/* Floating text */
+@keyframes float-up {
+  0% { opacity: 1; transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
+  50% { opacity: 0.9; transform: translateY(-30px) rotate(var(--rot, 0deg)) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-70px) rotate(var(--rot, 0deg)) scale(0.8); }
+}
+
+.floating-text {
+  animation: float-up 1.2s ease-out forwards;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #FFE66D, -1px -1px 0 #fff;
+  pointer-events: none;
+  position: fixed;
+  z-index: 50;
+  white-space: nowrap;
+}
+
+/* Happy particle burst */
+@keyframes particle-burst {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.2); }
+}
+
+.happy-particle {
+  animation: particle-burst 0.7s ease-out forwards;
+  position: fixed;
+  z-index: 50;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Score bounce */
+@keyframes score-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+.score-bounce {
+  animation: score-bounce 0.3s ease-out;
+}
+
+/* Mouth hint pulse */
+@keyframes mouth-hint {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.15); }
+}
+
+.mouth-hint {
+  animation: mouth-hint 0.7s ease-in-out infinite;
+}
+
+/* Corner speech bubble */
+@keyframes bubble-pop {
+  0% { transform: translateX(-50%) scale(0); opacity: 0; }
+  60% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* Character swap animation */
+@keyframes swap-out {
+  0% { transform: scale(1) translateX(0); opacity: 1; }
+  100% { transform: scale(0.3) translateX(-60vw) translateY(40vh); opacity: 0; }
+}
+
+@keyframes swap-in {
+  0% { transform: scale(0.3) translateX(60vw) translateY(40vh); opacity: 0; }
+  100% { transform: scale(1) translateX(0); opacity: 1; }
+}
+
+.swap-out {
+  animation: swap-out 0.4s ease-in forwards;
+}
+
+.swap-in {
+  animation: swap-in 0.5s ease-out forwards;
+}
+
+/* Install prompt */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Countdown */
+@keyframes countdown-pop {
+  0% { transform: scale(2.5); opacity: 0; }
+  15% { transform: scale(0.9); opacity: 1; }
+  80% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.3); opacity: 0; }
+}
+
+.countdown-number {
+  animation: countdown-pop 0.95s ease-out forwards;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  font-weight: 900;
+}
+
+/* Tickle zone finger cursor */
+.tickle-zone {
+  cursor: url('/assets/finger-cursor.png') 24 24, grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.tickle-zone:active {
+  cursor: url('/assets/finger-cursor.png') 24 24, grabbing;
+}
+
+/* Trajectory line */
+.trajectory-line {
+  stroke-dasharray: 6 4;
+  stroke-linecap: round;
+  fill: none;
+  pointer-events: none;
+}
+
+.trajectory-dot {
+  pointer-events: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+    touch-action: none;
+  }
+}

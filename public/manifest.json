@@ -1,0 +1,53 @@
+{
+  "name": "Stivulator",
+  "short_name": "Stivulator",
+  "description": "Tickle Steve Jobs (or the Samsung CEO) until he cracks into laughter, then throw stuff into his mouth! A pointless Tamagochi-style game drawn by a 10-year-old.",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen", "window-controls-overlay"],
+  "background_color": "#FFF8DC",
+  "theme_color": "#FF6B6B",
+  "orientation": "portrait",
+  "scope": "/",
+  "id": "/",
+  "icons": [
+    {
+      "src": "/assets/icon-face.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-face.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-face.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "screenshots": [
+    {
+      "src": "/assets/bg-room.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tickle Steve",
+      "short_name": "Tickle",
+      "description": "Start tickling Steve right away",
+      "url": "/",
+      "icons": [{ "src": "/assets/steve-idle.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
